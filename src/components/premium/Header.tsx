@@ -44,7 +44,7 @@ export default function PremiumHeader() {
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+        scrolled || mobileOpen
           ? "bg-white/90 backdrop-blur-lg shadow-md"
           : "bg-transparent"
       }`}
@@ -54,11 +54,11 @@ export default function PremiumHeader() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
-              src={scrolled ? "/images/logo-transparent.png" : "/images/logo-white.png"}
+              src={scrolled || mobileOpen ? "/images/logo-transparent.png" : "/images/logo-white.png"}
               alt="Vaktmester Consult AS"
               width={240}
               height={64}
-              className="h-14 lg:h-16 w-auto transition-all duration-300"
+              className="h-10 sm:h-14 lg:h-16 w-auto transition-all duration-300"
               priority
             />
           </Link>
@@ -151,7 +151,7 @@ export default function PremiumHeader() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`lg:hidden p-2 rounded-md ${scrolled ? "text-vk-charcoal" : "text-white"}`}
+            className={`lg:hidden p-2 rounded-md ${scrolled || mobileOpen ? "text-vk-charcoal" : "text-white"}`}
             aria-label="Åpne meny"
           >
             {mobileOpen ? (
@@ -175,7 +175,7 @@ export default function PremiumHeader() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
@@ -183,7 +183,7 @@ export default function PremiumHeader() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-80 bg-white shadow-2xl lg:hidden"
+              className="fixed top-0 right-0 bottom-0 w-80 z-[70] bg-white shadow-2xl lg:hidden overflow-y-auto"
             >
               <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
                 <span className="font-heading font-bold text-vk-charcoal text-lg">Meny</span>
