@@ -106,8 +106,8 @@ export default function VintertjenesterPage() {
             >
               {bulletItems.map((item) => (
                 <motion.li key={item} variants={bulletVariant} className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-vk-blue/10 flex items-center justify-center shrink-0">
-                    <svg className="w-5 h-5 text-vk-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-10 h-10 rounded-full bg-vk-navy flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>

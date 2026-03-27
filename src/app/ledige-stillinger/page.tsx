@@ -176,8 +176,8 @@ export default function LedigeStillingerPage() {
                     <ul className="space-y-4">
                       {requirements.map((req) => (
                         <li key={req} className="flex items-start gap-3">
-                          <div className="w-6 h-6 rounded-full bg-vk-blue/10 flex items-center justify-center shrink-0 mt-0.5">
-                            <svg className="w-3.5 h-3.5 text-vk-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <div className="w-6 h-6 rounded-full bg-vk-navy flex items-center justify-center shrink-0 mt-0.5">
+                            <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                             </svg>
                           </div>

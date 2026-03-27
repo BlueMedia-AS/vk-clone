@@ -189,16 +189,16 @@ export default function PremiumHeader() {
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="fixed top-0 right-0 bottom-0 w-80 z-[70] bg-white shadow-2xl lg:hidden overflow-y-auto"
             >
-              <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
-                <span className="font-heading font-bold text-vk-charcoal text-lg">Meny</span>
-                <button onClick={() => setMobileOpen(false)} className="p-2 rounded-md text-vk-charcoal">
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100">
+                <span className="font-heading font-bold text-vk-charcoal text-base">Meny</span>
+                <button onClick={() => setMobileOpen(false)} className="p-1.5 rounded-md text-vk-charcoal">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
-              <div className="flex flex-col h-[calc(100%-65px)]">
-                <div className="px-4 py-4 space-y-0.5 flex-1 overflow-y-auto">
+              <div className="flex flex-col h-[calc(100%-49px)]">
+                <div className="px-3 py-3 flex-1 overflow-y-auto">
                   {navItems.map((item) => (
                     <div key={item.name}>
                       {item.dropdown ? (
@@ -206,14 +206,14 @@ export default function PremiumHeader() {
                           <div className="flex items-center">
                             <Link
                               href={item.href}
-                              className="flex-1 px-4 py-3 text-base font-medium text-vk-charcoal hover:text-vk-blue rounded-lg"
+                              className="flex-1 px-3 py-2.5 text-[15px] font-medium text-vk-charcoal hover:text-vk-blue rounded-lg"
                               onClick={() => setMobileOpen(false)}
                             >
                               {item.name}
                             </Link>
                             <button
                               onClick={() => setMobileDropdown(mobileDropdown === item.dropdown ? null : item.dropdown)}
-                              className="p-2 rounded-lg text-vk-slate hover:bg-vk-blue/10"
+                              className="p-1.5 rounded-lg text-vk-slate hover:bg-vk-blue/10"
                             >
                               <svg
                                 className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === item.dropdown ? "rotate-180" : ""}`}
@@ -224,12 +224,12 @@ export default function PremiumHeader() {
                             </button>
                           </div>
                           {mobileDropdown === item.dropdown && (
-                            <div className="pl-4 pb-1 space-y-0.5">
+                            <div className="pl-3 pb-0.5">
                               {getDropdownItems(item.dropdown).map((subItem) => (
                                 <Link
                                   key={subItem.name}
                                   href={subItem.href}
-                                  className="block px-4 py-2 text-sm text-vk-slate hover:text-vk-blue rounded-lg"
+                                  className="block px-3 py-1.5 text-sm text-vk-slate hover:text-vk-blue rounded-lg"
                                   onClick={() => setMobileOpen(false)}
                                 >
                                   {subItem.name}
@@ -241,7 +241,7 @@ export default function PremiumHeader() {
                       ) : (
                         <Link
                           href={item.href}
-                          className="block px-4 py-3 text-base font-medium text-vk-charcoal hover:bg-vk-blue/10 hover:text-vk-blue rounded-lg"
+                          className="block px-3 py-2.5 text-[15px] font-medium text-vk-charcoal hover:bg-vk-blue/10 hover:text-vk-blue rounded-lg"
                           onClick={() => setMobileOpen(false)}
                         >
                           {item.name}
@@ -251,24 +251,24 @@ export default function PremiumHeader() {
                   ))}
 
                   {/* Mobile CTA */}
-                  <div className="pt-3">
+                  <div className="pt-2 px-1">
                     <Link
                       href="/kontakt"
-                      className="block w-full text-center px-6 py-3 rounded-lg bg-vk-red text-white font-semibold hover:bg-vk-red-light transition-colors"
+                      className="block w-full text-center px-5 py-2.5 rounded-lg bg-vk-red text-white text-sm font-semibold hover:bg-vk-red-light transition-colors"
                       onClick={() => setMobileOpen(false)}
                     >
                       Få tilbud
                     </Link>
                   </div>
                 </div>
-                <div className="shrink-0 px-6 py-4 border-t border-gray-100 bg-gray-50">
-                  <a href="tel:+4769815780" className="flex items-center gap-3 text-sm text-vk-charcoal mb-2">
+                <div className="shrink-0 px-5 py-3 border-t border-gray-100 bg-gray-50">
+                  <a href="tel:+4769815780" className="flex items-center gap-2.5 text-sm text-vk-charcoal mb-1.5">
                     <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     (+47) 69 81 57 80
                   </a>
-                  <a href="mailto:post@vaktmesterconsult.no" className="flex items-center gap-3 text-sm text-vk-charcoal">
+                  <a href="mailto:post@vaktmesterconsult.no" className="flex items-center gap-2.5 text-sm text-vk-charcoal">
                     <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
