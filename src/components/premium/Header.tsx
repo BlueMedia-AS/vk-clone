@@ -42,6 +42,7 @@ export default function PremiumHeader() {
   };
 
   return (
+    <>
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled || mobileOpen
@@ -167,7 +168,9 @@ export default function PremiumHeader() {
         </div>
       </div>
 
-      {/* Mobile Navigation — slide from right */}
+    </motion.header>
+
+      {/* Mobile Navigation — outside header to avoid backdrop-blur containing block issue */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -249,6 +252,6 @@ export default function PremiumHeader() {
           </>
         )}
       </AnimatePresence>
-    </motion.header>
+    </>
   );
 }
