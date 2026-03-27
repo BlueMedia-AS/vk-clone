@@ -25,9 +25,9 @@ const services = [
     href: "/tjenester/gartnertjenester",
     image: "/images/plen-gress.jpg",
     icon: (
-      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21c-1.5 0-6-1-8-5 0 0 1-3 4-5s5-5 5-5 2 3 5 5 4 5 4 5c-2 4-6.5 5-8 5z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21V10" />
+      <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 20c0 0 1-6 6-9m0 0c0 0-1-7 5-10 0 0 1 5-1 8s-4 4-4 4v7m0-9c0 0 1-5-4-9 0 0-2 5 0 8s4 3 4 3" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 20h16" />
       </svg>
     ),
   },
@@ -38,8 +38,10 @@ const services = [
     href: "/tjenester/vintertjenester",
     image: "/images/snorydding.jpg",
     icon: (
-      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18m0-18l-3 3m3-3l3 3m-3 15l-3-3m3 3l3-3M3 12h18M3 12l3-3m-3 3l3 3m15-3l-3-3m3 3l-3 3" />
+      <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07" />
+        <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2l-1.5 2.5L12 5l1.5-2.5L12 2zM12 19l-1.5 2.5L12 22l1.5-2.5L12 19zM2 12l2.5-1.5L5 12l-2.5 1.5L2 12zM19 12l2.5-1.5L22 12l-2.5 1.5L19 12z" />
       </svg>
     ),
   },
@@ -50,8 +52,9 @@ const services = [
     href: "/tjenester/renhold",
     image: "/images/gulvvask.jpg",
     icon: (
-      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+      <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v8M9 4h6M8 10h8l1 3H7l1-3zM7 13l-1 9h12l-1-9" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10 16v3M14 16v3" />
       </svg>
     ),
   },

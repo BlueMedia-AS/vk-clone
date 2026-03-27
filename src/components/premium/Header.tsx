@@ -27,6 +27,7 @@ const navItems = [
 
 export default function PremiumHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
@@ -197,37 +198,62 @@ export default function PremiumHeader() {
                 </button>
               </div>
               <div className="flex flex-col h-[calc(100%-65px)]">
-                <div className="px-4 py-6 space-y-1 flex-1 overflow-y-auto">
+                <div className="px-4 py-4 space-y-0.5 flex-1 overflow-y-auto">
                   {navItems.map((item) => (
                     <div key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="block px-4 py-3 text-lg font-medium text-vk-charcoal hover:bg-vk-blue/10 hover:text-vk-blue rounded-lg"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                      {item.dropdown && (
-                        <div className="pl-6 space-y-1">
-                          {getDropdownItems(item.dropdown).map((subItem) => (
+                      {item.dropdown ? (
+                        <>
+                          <div className="flex items-center">
                             <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block px-4 py-2 text-base text-vk-slate hover:text-vk-blue"
+                              href={item.href}
+                              className="flex-1 px-4 py-3 text-base font-medium text-vk-charcoal hover:text-vk-blue rounded-lg"
                               onClick={() => setMobileOpen(false)}
                             >
-                              {subItem.name}
+                              {item.name}
                             </Link>
-                          ))}
-                        </div>
+                            <button
+                              onClick={() => setMobileDropdown(mobileDropdown === item.dropdown ? null : item.dropdown)}
+                              className="p-2 rounded-lg text-vk-slate hover:bg-vk-blue/10"
+                            >
+                              <svg
+                                className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === item.dropdown ? "rotate-180" : ""}`}
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                              >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </button>
+                          </div>
+                          {mobileDropdown === item.dropdown && (
+                            <div className="pl-4 pb-1 space-y-0.5">
+                              {getDropdownItems(item.dropdown).map((subItem) => (
+                                <Link
+                                  key={subItem.name}
+                                  href={subItem.href}
+                                  className="block px-4 py-2 text-sm text-vk-slate hover:text-vk-blue rounded-lg"
+                                  onClick={() => setMobileOpen(false)}
+                                >
+                                  {subItem.name}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          className="block px-4 py-3 text-base font-medium text-vk-charcoal hover:bg-vk-blue/10 hover:text-vk-blue rounded-lg"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
                       )}
                     </div>
                   ))}
 
                   {/* Mobile CTA */}
-                  <div className="pt-4">
+                  <div className="pt-3">
                     <Link
-                      href="#kontakt"
+                      href="/kontakt"
                       className="block w-full text-center px-6 py-3 rounded-lg bg-vk-red text-white font-semibold hover:bg-vk-red-light transition-colors"
                       onClick={() => setMobileOpen(false)}
                     >
@@ -235,15 +261,15 @@ export default function PremiumHeader() {
                     </Link>
                   </div>
                 </div>
-                <div className="shrink-0 p-6 border-t border-gray-100 bg-white">
-                  <a href="tel:+4769815780" className="flex items-center gap-3 text-vk-charcoal mb-3">
-                    <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="shrink-0 px-6 py-4 border-t border-gray-100 bg-gray-50">
+                  <a href="tel:+4769815780" className="flex items-center gap-3 text-sm text-vk-charcoal mb-2">
+                    <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     (+47) 69 81 57 80
                   </a>
-                  <a href="mailto:post@vaktmesterconsult.no" className="flex items-center gap-3 text-vk-charcoal">
-                    <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <a href="mailto:post@vaktmesterconsult.no" className="flex items-center gap-3 text-sm text-vk-charcoal">
+                    <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     post@vaktmesterconsult.no
