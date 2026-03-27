@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Primary — derived from logo blue */
+  --color-vk-navy: #1a2744;
+  --color-vk-blue: #2563eb;
+  --color-vk-blue-light: #3b82f6;
+  --color-vk-blue-pale: #dbeafe;
+
+  /* Accent — derived from logo red */
+  --color-vk-red: #dc2626;
+  --color-vk-red-light: #ef4444;
+  --color-vk-red-pale: #fee2e2;
+
+  /* Neutrals */
+  --color-vk-dark: #1b1b1b;
+  --color-vk-charcoal: #1e293b;
+  --color-vk-slate: #475569;
+  --color-vk-gray: #64748b;
+  --color-vk-gray-light: #94a3b8;
+  --color-vk-light: #f1f5f9;
+  --color-vk-warm: #f8f7f4;
+  --color-vk-white: #ffffff;
+
+  /* Legacy compat — keep close-match working */
+  --color-vk-green: #1a3a2a;
+  --color-vk-teal: #2d6a4f;
+  --color-vk-light-green: #40916c;
+  --color-vk-lime: #74c69d;
+  --color-vk-pale: #d8f3dc;
+  --color-vk-cream: #faf9f6;
+  --color-vk-emerald: #10b981;
+  --color-vk-forest: #064e3b;
+  --color-vk-gold: #d4a574;
+
+  --font-heading: var(--font-archivo);
+  --font-body: var(--font-ibm-plex-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body), sans-serif;
+  color: var(--color-vk-dark);
+  background: var(--color-vk-white);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), sans-serif;
+}
