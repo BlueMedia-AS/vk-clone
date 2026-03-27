@@ -160,17 +160,18 @@ function ServiceCard({ service }: { service: typeof services[number] }) {
               className="object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-            {/* Icon badge floating on image */}
-            <div className="absolute bottom-0 left-6 translate-y-1/2 w-14 h-14 rounded-xl bg-white shadow-lg flex items-center justify-center text-vk-blue border border-gray-100 group-hover:bg-vk-blue group-hover:text-white transition-colors duration-300">
-              {service.icon}
-            </div>
           </div>
 
           {/* Content */}
-          <div className="p-6 pt-10">
-            <h3 className="font-heading text-xl font-bold text-vk-charcoal mb-3 group-hover:text-vk-blue transition-colors">
-              {service.title}
-            </h3>
+          <div className="p-6">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-lg bg-vk-blue/10 flex items-center justify-center text-vk-blue shrink-0 group-hover:bg-vk-blue group-hover:text-white transition-colors duration-300">
+                {service.icon}
+              </div>
+              <h3 className="font-heading text-xl font-bold text-vk-charcoal group-hover:text-vk-blue transition-colors">
+                {service.title}
+              </h3>
+            </div>
             <p className="text-vk-slate text-base leading-relaxed mb-4">
               {service.description}
             </p>

@@ -109,7 +109,7 @@ export default function KontaktPage() {
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                <div className="rounded-3xl p-10 lg:p-12 relative overflow-hidden" style={{ backgroundColor: "#1a2744" }}>
+                <div className="rounded-3xl p-6 sm:p-8 lg:p-12 relative overflow-hidden" style={{ backgroundColor: "#1a2744" }}>
                   {/* Decorative SVG — concentric circles top-right */}
                   <svg className="absolute -top-10 -right-10 w-80 h-80 opacity-[0.15]" viewBox="0 0 300 300" fill="none">
                     <circle cx="220" cy="80" r="140" stroke="#2563eb" strokeWidth="1" />
@@ -143,13 +143,13 @@ export default function KontaktPage() {
                     <div className="space-y-4">
                       {contactInfo.map((item) => {
                         const inner = (
-                          <div className="flex items-center gap-4 p-4 rounded-2xl group transition-colors" style={{ backgroundColor: "rgba(255,255,255,0.05)" }} key={item.label}>
-                            <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white shrink-0" style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
+                          <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl group transition-colors" style={{ backgroundColor: "rgba(255,255,255,0.05)" }} key={item.label}>
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-white shrink-0" style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
                               {item.icon}
                             </div>
-                            <div>
+                            <div className="min-w-0">
                               <p className="text-xs uppercase tracking-wider font-medium mb-1" style={{ color: "rgba(255,255,255,0.4)" }}>{item.label}</p>
-                              <p className="text-base font-semibold text-white group-hover:text-vk-blue-pale transition-colors">
+                              <p className="text-sm sm:text-base font-semibold text-white group-hover:text-vk-blue-pale transition-colors break-words">
                                 {item.value}
                               </p>
                             </div>
