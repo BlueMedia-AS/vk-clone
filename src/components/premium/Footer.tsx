@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -20,6 +21,61 @@ const serviceLinks = [
   { name: "Oppussing", href: "/tjenester/oppussing" },
 ];
 
+function NewsletterForm() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error();
+      setStatus("sent");
+    } catch {
+      alert("Noe gikk galt. Prøv igjen.");
+      setStatus("idle");
+    }
+  }
+
+  if (status === "sent") {
+    return (
+      <div className="mt-8">
+        <h4 className="font-heading font-semibold text-sm mb-3">Nyhetsbrev</h4>
+        <p className="text-green-400 text-sm">Takk! Du er nå påmeldt.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-8">
+      <h4 className="font-heading font-semibold text-sm mb-3">Nyhetsbrev</h4>
+      <form className="flex gap-2" onSubmit={handleSubmit}>
+        <input
+          type="email"
+          required
+          placeholder="Din e-post"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="flex-1 px-3 py-2 rounded-lg border text-white text-sm placeholder:text-gray-500 focus:outline-none transition-colors"
+          style={{ backgroundColor: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.1)" }}
+        />
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          className="px-4 py-2 rounded-lg bg-vk-blue text-white text-sm font-medium hover:bg-vk-blue-light transition-colors disabled:opacity-70"
+        >
+          {status === "sending" ? "..." : "Ok"}
+        </button>
+      </form>
+    </div>
+  );
+}
+
 export default function PremiumFooter() {
   return (
     <footer className="text-white relative" style={{ backgroundColor: "#1e293b" }}>
@@ -30,13 +86,15 @@ export default function PremiumFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Logo & About */}
           <div className="lg:col-span-2">
-            <Image
-              src="/images/logo-white.png"
-              alt="Vaktmester Consult AS"
-              width={200}
-              height={56}
-              className="h-14 w-auto mb-6"
-            />
+            <a href="/">
+              <Image
+                src="/images/logo-white.png"
+                alt="Vaktmester Consult AS"
+                width={200}
+                height={56}
+                className="h-14 w-auto mb-6"
+              />
+            </a>
             <p className="text-gray-400 text-base leading-relaxed max-w-sm">
               Vaktmester Consult AS tilbyr profesjonelle vaktmestertjenester, gartnertjenester,
               vintertjenester, renhold og oppussing i Tomter, Askim, Mysen og omegn.
@@ -134,23 +192,7 @@ export default function PremiumFooter() {
             </div>
 
             {/* Newsletter */}
-            <div className="mt-8">
-              <h4 className="font-heading font-semibold text-sm mb-3">Nyhetsbrev</h4>
-              <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="email"
-                  placeholder="Din e-post"
-                  className="flex-1 px-3 py-2 rounded-lg border text-white text-sm placeholder:text-gray-500 focus:outline-none transition-colors"
-                  style={{ backgroundColor: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.1)" }}
-                />
-                <button
-                  type="submit"
-                  className="px-4 py-2 rounded-lg bg-vk-blue text-white text-sm font-medium hover:bg-vk-blue-light transition-colors"
-                >
-                  Ok
-                </button>
-              </form>
-            </div>
+            <NewsletterForm />
           </div>
         </div>
 

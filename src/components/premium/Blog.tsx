@@ -50,7 +50,7 @@ const posts = [
 
 export default function PremiumBlog() {
   return (
-    <section id="blogg" className="py-24 lg:py-32 bg-vk-light relative overflow-hidden">
+    <section id="aktuelt" className="py-24 lg:py-32 bg-vk-light relative overflow-hidden">
       {/* Decorative elements */}
       <svg className="absolute bottom-10 left-10 w-[250px] h-[250px] opacity-[0.03]" viewBox="0 0 250 250" fill="none">
         <circle cx="125" cy="125" r="100" stroke="#2563eb" strokeWidth="1" />
@@ -71,7 +71,7 @@ export default function PremiumBlog() {
               Aktuelt
             </span>
             <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-vk-charcoal">
-              Fra bloggen
+              Aktuelt
             </h2>
           </div>
           <Link
@@ -85,7 +85,7 @@ export default function PremiumBlog() {
           </Link>
         </motion.div>
 
-        {/* Blog grid — featured + 2 smaller */}
+        {/* Aktuelt grid — featured + 2 smaller */}
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-6"
           variants={staggerContainer}

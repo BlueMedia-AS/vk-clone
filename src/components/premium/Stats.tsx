@@ -8,18 +8,18 @@ import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 const stats = [
   {
-    number: 15,
-    suffix: "+",
+    number: 9,
+    suffix: "",
     label: "Ansatte",
     description:
       "Dedikerte fagfolk med bred kompetanse innen vedlikehold, renhold og utearbeid — klare for oppdraget ditt.",
   },
   {
-    number: 1887,
+    number: 1987,
     suffix: "",
     label: "Etablert",
     description:
-      "Med røtter helt tilbake til 1887 har vi over 135 års erfaring med å holde eiendommer i toppstand.",
+      "Med røtter helt tilbake til 1987 har vi over 35 års erfaring med å holde eiendommer i toppstand.",
   },
   {
     number: 500,

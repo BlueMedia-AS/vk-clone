@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
+import ChatWidget from "@/components/ChatWidget";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang="no">
       <body className={`${archivo.variable} ${ibmPlexSans.variable} antialiased`}>
         {children}
+        <ChatWidget />
       </body>
     </html>
   );

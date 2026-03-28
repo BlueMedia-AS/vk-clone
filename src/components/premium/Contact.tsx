@@ -1,9 +1,33 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { slideInLeft, slideInRight } from "@/lib/animations";
 
 export default function PremiumContact() {
+  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSending(true);
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error();
+      setSent(true);
+    } catch {
+      alert("Noe gikk galt. Prøv igjen eller ring oss.");
+    } finally {
+      setSending(false);
+    }
+  }
+
   return (
     <section id="kontakt" className="py-24 lg:py-32 relative overflow-hidden" style={{ backgroundColor: "#1a2744" }}>
       {/* Decorative mesh gradient */}
@@ -84,50 +108,71 @@ export default function PremiumContact() {
             viewport={{ once: true }}
           >
             <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl">
-              <h3 className="font-heading text-2xl font-bold text-vk-charcoal mb-6">
-                Send oss en melding
-              </h3>
-              <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-vk-charcoal mb-2">
-                    Navn
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Ditt navn"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 text-vk-charcoal placeholder:text-vk-gray/50 focus:outline-none focus:ring-2 focus:ring-vk-blue/30 focus:border-vk-blue transition-colors"
-                  />
+              {sent ? (
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="font-heading text-2xl font-bold text-vk-charcoal mb-2">Takk for din henvendelse!</h3>
+                  <p className="text-vk-slate">Vi tar kontakt så snart vi kan.</p>
                 </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-vk-charcoal mb-2">
-                    E-post
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder="din@epost.no"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 text-vk-charcoal placeholder:text-vk-gray/50 focus:outline-none focus:ring-2 focus:ring-vk-blue/30 focus:border-vk-blue transition-colors"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-vk-charcoal mb-2">
-                    Melding
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    placeholder="Fortell oss hva du trenger hjelp med..."
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 text-vk-charcoal placeholder:text-vk-gray/50 focus:outline-none focus:ring-2 focus:ring-vk-blue/30 focus:border-vk-blue transition-colors resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full px-8 py-4 rounded-xl bg-vk-red text-white font-semibold text-lg hover:bg-vk-red-light transition-colors shadow-lg shadow-vk-red/25"
-                >
-                  Send melding
-                </button>
-              </form>
+              ) : (
+                <>
+                  <h3 className="font-heading text-2xl font-bold text-vk-charcoal mb-6">
+                    Send oss en melding
+                  </h3>
+                  <form className="space-y-5" onSubmit={handleSubmit}>
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-vk-charcoal mb-2">
+                        Navn
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        placeholder="Ditt navn"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-vk-charcoal placeholder:text-vk-gray/50 focus:outline-none focus:ring-2 focus:ring-vk-blue/30 focus:border-vk-blue transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-vk-charcoal mb-2">
+                        E-post
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder="din@epost.no"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-vk-charcoal placeholder:text-vk-gray/50 focus:outline-none focus:ring-2 focus:ring-vk-blue/30 focus:border-vk-blue transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium text-vk-charcoal mb-2">
+                        Melding
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows={4}
+                        required
+                        placeholder="Fortell oss hva du trenger hjelp med..."
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-vk-charcoal placeholder:text-vk-gray/50 focus:outline-none focus:ring-2 focus:ring-vk-blue/30 focus:border-vk-blue transition-colors resize-none"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={sending}
+                      className="w-full px-8 py-4 rounded-xl bg-vk-red text-white font-semibold text-lg hover:bg-vk-red-light transition-colors shadow-lg shadow-vk-red/25 disabled:opacity-70"
+                    >
+                      {sending ? "Sender..." : "Send melding"}
+                    </button>
+                  </form>
+                </>
+              )}
             </div>
           </motion.div>
         </div>

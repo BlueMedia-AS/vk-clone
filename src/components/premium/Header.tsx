@@ -54,7 +54,7 @@ export default function PremiumHeader() {
       <div className="w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 lg:h-24 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <a href="/" className="flex-shrink-0">
             <Image
               src={scrolled || mobileOpen ? "/images/logo-transparent.png" : "/images/logo-white.png"}
               alt="Vaktmester Consult AS"
@@ -63,7 +63,7 @@ export default function PremiumHeader() {
               className="h-10 sm:h-14 lg:h-16 w-auto transition-all duration-300"
               priority
             />
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
